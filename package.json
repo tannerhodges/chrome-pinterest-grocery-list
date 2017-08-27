@@ -1,0 +1,13 @@
+{
+  "name": "chrome-pinterest-grocery-list",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:tannerhodges/chrome-pinterest-grocery-list.git",
+  "author": "Tanner Hodges <austintannerhodges@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.0.0",
+    "stylelint-config-property-sort-order-smacss": "^1.1.2"
+  }
+}

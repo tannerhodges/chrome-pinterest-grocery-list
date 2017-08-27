@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "Pinterest Grocery List",
+  "version": "0.0.1",
+  "description": "Create weekly grocery lists from recipes on Pinterest.",
+  "content_scripts": [
+    {
+      "matches": ["https://www.pinterest.com/*"],
+      "css": ["index.css"],
+      "js": ["content.js"]
+    }
+  ]
+}

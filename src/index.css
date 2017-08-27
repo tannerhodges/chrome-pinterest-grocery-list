@@ -1,0 +1,41 @@
+#pinterestGroceryList {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  border-top: 1px solid black;
+  background: lightgray;
+  overflow: hidden;
+}
+
+#pinterestGroceryList [data-day] {
+  position: relative;
+  flex: 1 1 auto;
+  width: calc(100% / 7);
+}
+#pinterestGroceryList [data-day]:not(:first-child) {
+  border-left: 1px solid black;
+}
+#pinterestGroceryList [data-day]::before {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: lightgray;
+  text-align: center;
+  content: attr(data-day);
+}
+
+#pinterestGroceryList a {
+  display: block;
+  height: 100%;
+}
+#pinterestGroceryList img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
