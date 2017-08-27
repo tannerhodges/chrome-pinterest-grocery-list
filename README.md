@@ -6,6 +6,7 @@ Chrome extension for creating weekly grocery lists from recipes on Pinterest.
 
 - [x] Send recipe links in an email (to view on your phone)
 - [ ] Add days + recipe images to each link in the email
+- [ ] Option to delete a day's recipe
 - [ ] Add multiple recipes per day
 - [ ] Drag and drop to swap days
 - [ ] Show/hide dashboard
