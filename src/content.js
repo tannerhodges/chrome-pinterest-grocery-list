@@ -65,19 +65,23 @@ const dayBlockSelector = '#pinterestGroceryList [data-day]';
 // Add dashboard to bottom of the page
 let dashboard = document.createElement('div');
 dashboard.id = 'pinterestGroceryList';
-days.forEach(day => dashboard.innerHTML += `<div data-day="${day}"></div>`);
+
+// Load
+let data = localStorage.getItem('pinterestGroceryList');
+if (data) {
+  dashboard.innerHTML = data;
+// First Time
+} else {
+  days.forEach(day => dashboard.innerHTML += `<div data-day="${day}"></div>`);
+  dashboard.innerHTML += `<div class="actions">
+    <p>Email these recipes to:</p>
+    <label for="pinterestGroceryList-email-input" class="visually-hidden">Email Address</label>
+    <input id="pinterestGroceryList-email-input" name="email" type="email" placeholder="email@address.com">
+    <a id="pinterestGroceryList-email-button" href="">Send Email</a>
+  </div>`;
+}
+
 dashboard = document.body.appendChild(dashboard);
-let dayBlocks = dashboard.querySelectorAll('[data-day]');
-
-const save = () => {
-  localStorage.setItem('pinterestGroceryList', dashboard.innerHTML);
-};
-const load = () => {
-  let data = localStorage.getItem('pinterestGroceryList');
-  if (data) { dashboard.innerHTML = data; }
-};
-
-load();
 
 // Make pins draggable
 on('body', 'mousedown', pinSelector, (e) => {
@@ -126,6 +130,25 @@ const dropHandler = (event) => {
   dayBlock.innerHTML = '';
   dayBlock.appendChild(link);
 
-  save();
+  // Save
+  localStorage.setItem('pinterestGroceryList', dashboard.innerHTML);
 };
 on('body', 'drop', dayBlockSelector, dropHandler);
+
+
+
+// Email Recipes
+on('body', 'mousedown', '#pinterestGroceryList-email-button', (event) => {
+  let input = document.querySelector('#pinterestGroceryList-email');
+
+  input.setAttribute('value', input.value);
+
+  let links = Array.from(dashboard.querySelectorAll('[data-day] a')).map(a => a.href);
+
+  event.target.href = `mailto:${input.value}?subject=${encodeURIComponent('Pinterest Grocery List')}&body=${encodeURIComponent(links.join('\n'))}`;
+  event.target.target = '_blank';
+  event.target.rel = 'noopener noreferrer';
+
+  // Save
+  localStorage.setItem('pinterestGroceryList', dashboard.innerHTML);
+});

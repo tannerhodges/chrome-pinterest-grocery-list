@@ -4,19 +4,20 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 7.5em;
   border-top: 1px solid black;
   background: lightgray;
   overflow: hidden;
 }
 
+#pinterestGroceryList > :not(:first-child) {
+  border-left: 1px solid black;
+}
+
 #pinterestGroceryList [data-day] {
   position: relative;
   flex: 1 1 auto;
-  width: calc(100% / 7);
-}
-#pinterestGroceryList [data-day]:not(:first-child) {
-  border-left: 1px solid black;
+  width: calc((100% - 31.25em) / 7);
 }
 #pinterestGroceryList [data-day]::before {
   display: block;
@@ -29,13 +30,38 @@
   content: attr(data-day);
 }
 
-#pinterestGroceryList a {
+#pinterestGroceryList [data-day] a {
   display: block;
   height: 100%;
 }
-#pinterestGroceryList img {
+#pinterestGroceryList [data-day] img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
+}
+
+#pinterestGroceryList .actions {
+  flex: 1 1 auto;
+  width: 31.25em;
+  padding: 1em;
+}
+#pinterestGroceryList .actions > :first-child {
+  margin-top: 0;
+}
+
+
+/*------------------------------*/
+/* Helpers */
+/*------------------------------*/
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  border: 0;
+  overflow: hidden;
 }
