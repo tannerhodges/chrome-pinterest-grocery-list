@@ -3,7 +3,11 @@
   "version": "0.0.2",
   "main": "index.js",
   "repository": "git@github.com:tannerhodges/chrome-pinterest-grocery-list.git",
-  "author": "Tanner Hodges <austintannerhodges@gmail.com>",
+  "author": {
+    "name": "Tanner Hodges",
+    "email": "austintannerhodges@gmail.com",
+    "url": "https://tannerhodges.com"
+  },
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
